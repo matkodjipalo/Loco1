@@ -3,21 +3,21 @@
 namespace Locastic;
 
 /**
- * Zadaci 2.3, 2.4, 2.5, 2.6
+ * Zadaci 2.3, 2.4, 2.5, 2.6.
  */
 class ArrayHandler
 {
     /**
-     * Za dani niz vraća element/e koji se najviše puta ponavljaju
+     * Za dani niz vraća element/e koji se najviše puta ponavljaju.
      *
-     * @param  array  $arr
+     * @param array $arr
+     *
      * @return array Niz elementa koji se najviše puta ponavljaju
      */
     public function findMostRepeatedElementOfAnArray(array $arr)
     {
         if (empty($arr)) {
-            throw new \InvalidArgumentException("Proslijeđeni niz je prazan");
-            
+            throw new \InvalidArgumentException('Proslijeđeni niz je prazan');
         }
 
         // asocijativni niz, ključ je element niza, a vrijednost je broj ponavljanja tog elementa

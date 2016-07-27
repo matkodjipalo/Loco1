@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Locastic;
+namespace tests\Locastic;
 
 use Locastic\ArrayHandler;
 
@@ -20,7 +20,7 @@ class ArrayHandlerTest extends \PHPUnit_Framework_TestCase
     public function testFindMostRepeatedElementOfAnArrayOfOne()
     {
         $arrHandler = new ArrayHandler();
-        $arr = ["one"];
+        $arr = ['one'];
 
         $this->assertEquals(
             $arr,
