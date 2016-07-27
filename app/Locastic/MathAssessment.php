@@ -3,7 +3,7 @@
 namespace Locastic;
 
 /**
- * Zadaci 2.6 i 2.7.
+ * Zadaci 2.2, 2.6 i 2.7.
  */
 class MathAssessment
 {
@@ -11,6 +11,8 @@ class MathAssessment
      * Ispisuje brojeve od 1 do 100, ali na način da za brojeve koji su djeljivi s tri ispiše “LOCA”, 
      * za brojeve koji su djeljivi sa 5 ispiše “STIC”,
      * a za brojeve koji su djeljivi i sa 3 i sa 5 ispišite “LOCASTIC”.
+     *
+     * Zadatak 2.7
      */
     public function locasticModulo()
     {
@@ -29,5 +31,25 @@ class MathAssessment
                 echo '<br>';
             }
         }
+    }
+
+    /**
+     * Funkcija prima dva integer parametra n i m, te kao rezultat vraća vrijednost n^m.
+     *
+     * Zadatak 2.2
+     * 
+     * @param int $base
+     * @param int $exp
+     *
+     * @return int
+     */
+    public function power($base, $exp)
+    {
+        $result = 1;
+        for ($i = 0; $i < $exp; ++$i) {
+            $result *= $base;
+        }
+
+        return $result;
     }
 }
