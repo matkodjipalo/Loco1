@@ -2,6 +2,9 @@
 
 namespace Locastic;
 
+/**
+ * 2.1. zadatak
+ */
 class PalindromChecker
 {
     /**
