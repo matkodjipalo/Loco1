@@ -13,6 +13,8 @@ class PalindromChecker
      * @param string $string
      *
      * @return bool
+     *
+     * @throws \InvalidArgumentException U slučaju prekratkog string
      */
     public function isStringPalindrom($string)
     {

@@ -13,6 +13,8 @@ class ArrayHandler
      * @param array $arr
      *
      * @return array Niz elementa koji se najviše puta ponavljaju
+     *
+     * @throws \InvalidArgumentException U slučaju praznog niza
      */
     public function findMostRepeatedElementOfAnArray(array $arr)
     {
