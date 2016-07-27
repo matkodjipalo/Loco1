@@ -15,6 +15,15 @@ class PalindromCheckerTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($palindromChecker->isStringPalindrom($string));
     }
 
+    /**
+     * @dataProvider palindromProviderHardWay
+     */
+    public function testStringIsPalindromHardWay($string)
+    {
+        $palindromChecker = new PalindromChecker();
+        $this->assertTrue($palindromChecker->isStringPalindromHardWay($string));
+    }
+
     public function testStringIsNotPalindrom()
     {
         $string = 'Anal';
@@ -84,6 +93,36 @@ class PalindromCheckerTest extends \PHPUnit_Framework_TestCase
                 ['U maju udovica baci vodu u jamu'],
                 ['U Šidu udišu'],
                 ['Uguraj u jarugu'],
+                ['Ujak ima radar a mi Kaju'],
+        ];
+    }
+
+    public function palindromProviderHardWay()
+    {
+        return [
+                ['Ana'],
+                ['Dud'],
+                ['Kapak'],
+                ['Nadan'],
+                ['Neven'],
+                ['Oko'],
+                ['Potop'],
+                ['Radar'],
+                ['Ratar'],
+                ['Rotor'],
+                ['A mene tu ni minute nema'],
+                ['Ana nabra par banana'],
+                ['Ana voda Radovana'],
+                ['Ana voli Milovana'],
+                ['Edo gaji jagode'],
+                ['Ero ratar ore'],
+                ['Evo love'],
+                ['Evo sada sove'],
+                ['I jogurt ujutru goji'],
+                ['I on ukrao arku Noi'],
+                ['Ide Neven Edi'],
+                ['Idi Milane na Lim idi'],
+                ['Imaju Arapi i para u jami'],
                 ['Ujak ima radar a mi Kaju'],
         ];
     }
