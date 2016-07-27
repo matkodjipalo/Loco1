@@ -23,14 +23,69 @@ class ArrayHandler
         }
 
         // asocijativni niz, ključ je element niza, a vrijednost je broj ponavljanja tog elementa
-        $valuesCount = array_count_values($arr);
+        $valuesCount = [];
 
-        // max broj ponvaljanja nekog elementa ili više elemenata u danome nizu
-        $maxRepeatCount = max($valuesCount);
+        $len = count($arr);
+        for ($i = 0; $i < $len; ++$i) {
+            if (empty($valuesCount[$arr[$i]])) {
+                $valuesCount[$arr[$i]] = 1;
+            } else {
+                ++$valuesCount[$arr[$i]];
+            }
+        }
 
-        // više elemenata može imati isti broj ponavljanja
-        $mostRepeatedElementsOfArray = array_keys($valuesCount, $maxRepeatCount);
+        $mostRepeatedElementsOfArray = $this->getKeyWithLargestValueInArray($valuesCount);
 
         return $mostRepeatedElementsOfArray;
+    }
+
+    /**
+     * Vraća najmanju vrijednost unutar niza.
+     *
+     * @param array $arr
+     *
+     * @return int
+     *
+     * @throws \InvalidArgumentException U slučaju praznog niza
+     */
+    public function getSmallestValueInArray(array $arr)
+    {
+        if (empty($arr)) {
+            throw new \InvalidArgumentException('Proslijeđeni niz je prazan');
+        }
+
+        $len = count($arr);
+        $minimum = $arr[0];
+        for ($i = 1; $i < $len; ++$i) {
+            if ($minimum > $arr[$i]) {
+                $minimum = $arr[$i];
+            }
+        }
+
+        return $minimum;
+    }
+
+    /**
+     * Vraća najmanju vrijednost unutar niza.
+     *
+     * @param array $arr
+     *
+     * @return int
+     */
+    private function getKeyWithLargestValueInArray(array $arr)
+    {
+        $maxKey = null;
+        $maxValue = null;
+
+        foreach ($arr as $key => $value) {
+            if (!$maxKey && !$maxValue) {
+                $maxKey = $key;
+                $maxValue = $value;
+            } elseif ($value > $maxValue) {
+                $maxKey = $key;
+            }
+        }
+
+        return $maxKey;
     }
 }
