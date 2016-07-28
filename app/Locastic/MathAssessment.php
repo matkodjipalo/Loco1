@@ -52,4 +52,75 @@ class MathAssessment
 
         return $result;
     }
+
+    /**
+     * @param array $arr
+     * @param int   $groupsToSplitAnArray
+     *
+     * @return array
+     */
+    public function groupArrayByCloseToEqualSums(array $arr, $groupsToSplitAnArray)
+    {
+        $groups = [];
+        $groupSums = [];
+        $leftOvers = [];
+
+        $arrSum = 0;
+        $arrCount = count($arr);
+        $arr = $this->bubbleSort($arr);
+
+        for ($i = 0; $i < $arrCount; ++$i) {
+            $arrSum += $arr[$i];
+        }
+
+        $partitionSum = $arrSum / $groupsToSplitAnArray;
+
+        for ($i = 0; $i < $groupsToSplitAnArray; ++$i) {
+            $groups[$i] = [];
+            $groupSums[$i] = 0;
+        }
+
+        for ($i = 0; $i < $arrCount; ++$i) {
+            $elem = $arr[$i];
+            for ($j = 0; $j < $groupsToSplitAnArray; ++$j) {
+                $tempSum = $groupSums[$j];
+                if ($tempSum + $elem <= $partitionSum) {
+                    $groupSums[$j] += $elem;
+                    $groups[$j][] = $elem;
+                    unset($elem);
+                    break;
+                }
+            }
+            if (!empty($elem)) {
+                $leftOvers[] = $elem;
+            }
+        }
+
+        if ($leftOvers) {
+            $leftOversCount = count($leftOvers);
+            for ($i = 0; $i < $leftOversCount; ++$i) {
+                $groups[$groupsToSplitAnArray - 1 - $i][] = $leftOvers[$i];
+            }
+        }
+
+        return $groups;
+    }
+
+    private function bubbleSort($array)
+    {
+        if (!$length = count($array)) {
+            return $array;
+        }
+        for ($outer = 0; $outer < $length; ++$outer) {
+            for ($inner = 0; $inner < $length; ++$inner) {
+                if ($array[$outer] > $array[$inner]) {
+                    $tmp = $array[$outer];
+                    $array[$outer] = $array[$inner];
+                    $array[$inner] = $tmp;
+                }
+            }
+        }
+
+        return $array;
+    }
 }
