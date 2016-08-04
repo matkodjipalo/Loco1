@@ -26,7 +26,7 @@ class PalindromChecker
             );
         }
 
-        $reverse = $this->utf8Strrev($string);
+        $reverse = $this->utf8StrRev($string);
         $reverse = $this->removeAllWhitespaces($reverse);
 
         return $string == $reverse;
@@ -57,7 +57,7 @@ class PalindromChecker
      *
      * @return string
      */
-    private function utf8Strrev($str)
+    private function utf8StrRev($str)
     {
         preg_match_all('/./us', $str, $ar);
 
