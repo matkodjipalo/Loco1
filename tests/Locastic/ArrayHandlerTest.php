@@ -41,4 +41,40 @@ class ArrayHandlerTest extends \PHPUnit_Framework_TestCase
             $arrHandler->getSmallestValueInArray($arr)
         );
     }
+
+    public function testGetLongestCommonSubstring()
+    {
+        $arrHandler = new ArrayHandler();
+        $str1 = 'ante';
+        $str2 = 'Kant';
+
+        $this->assertEquals(
+            'ant',
+            $arrHandler->getLongestCommonSubstring($str1, $str2)
+        );
+    }
+
+    /**
+     * @expectedException InvalidArgumentException
+     */
+    public function testGetCommonSubstringWhereOneStringIsEmpty()
+    {
+        $arrHandler = new ArrayHandler();
+        $str1 = '';
+        $str2 = 'Kant';
+
+        $arrHandler->getLongestCommonSubstring($str1, $str2);
+    }
+
+    public function testGetCommonSubstringWhenStringsAreTotallyDifferent()
+    {
+        $arrHandler = new ArrayHandler();
+        $str1 = 'abcčćdđefgh';
+        $str2 = 'žzuwrpošytr';
+
+        $this->assertSame(
+            '',
+            $arrHandler->getLongestCommonSubstring($str1, $str2)
+        );
+    }
 }

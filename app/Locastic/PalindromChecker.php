@@ -21,7 +21,9 @@ class PalindromChecker
         $string = $this->removeAllWhitespaces($string);
         $string = mb_strtolower($string, 'UTF-8');
         if (mb_strlen($string, 'UTF-8') < 3) {
-            throw new \InvalidArgumentException('Odlučio san da se može testirati samo string dužine 3 i više znakova');
+            throw new \InvalidArgumentException(
+                'Odlučio san da se može testirati samo string dužine 3 i više znakova'
+            );
         }
 
         $reverse = $this->utf8Strrev($string);
