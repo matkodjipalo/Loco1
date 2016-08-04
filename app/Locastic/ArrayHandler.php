@@ -81,18 +81,17 @@ class ArrayHandler
         $length1 = strlen($string1);
         $length2 = strlen($string2);
         $result         = '';
-        
+
         if ($length1 === 0 || $length2 === 0) {
             throw new \InvalidArgumentException();
         }
-        
+
         $longestCommonSubsequence = array();
-        
-        // Initialize the CSL array to assume there are no similarities
+
         $longestCommonSubsequence = array_fill(0, $length1, array_fill(0, $length2, 0));
-        
+
         $largestSize = 0;
-        
+
         for ($i = 0; $i < $length1; $i++) {
             for ($j = 0; $j < $length2; $j++) {
                 // Provjera svake kombinacije znakova
@@ -104,21 +103,17 @@ class ArrayHandler
                     } else {
                         $longestCommonSubsequence[$i][$j] = $longestCommonSubsequence[$i - 1][$j - 1] + 1;
                     }
-                    
+
+                    // trenutna subsekvenca je najduža
                     if ($longestCommonSubsequence[$i][$j] > $largestSize) {
-                        // Remember this as the largest
                         $largestSize = $longestCommonSubsequence[$i][$j];
-                        // Wipe any previous results
-                        $result      = '';
-                        // And then fall through to remember this new value
+                        $result = '';
                     }
-                    
+
                     if ($longestCommonSubsequence[$i][$j] === $largestSize) {
-                        // Remember the largest string(s)
                         $result = substr($string1, $i - $largestSize + 1, $largestSize);
                     }
                 }
-                // Else, $CSL should be set to 0, which it was already initialized to
             }
         }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace tests\Locastic;
+namespace Tests\Locastic;
 
 use Locastic\ArrayHandler;
 

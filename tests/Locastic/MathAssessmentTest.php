@@ -1,6 +1,6 @@
 <?php
 
-namespace tests\Locastic;
+namespace Tests\Locastic;
 
 use Locastic\MathAssessment;
 
@@ -10,10 +10,24 @@ class MathAssessmentTest extends \PHPUnit_Framework_TestCase
     {
         $mathAssessment = new MathAssessment();
         $base = 2;
-        $exponent = 4;
+        $exponent = 10;
 
         $this->assertEquals(
-            16,
+            1024,
+            $mathAssessment->power($base, $exponent)
+        );
+    }
+
+    /**
+     * @dataProvider randomIntProvider
+     */
+    public function testPowerZero($base)
+    {
+        $mathAssessment = new MathAssessment();
+        $exponent = 0;
+
+        $this->assertEquals(
+            1,
             $mathAssessment->power($base, $exponent)
         );
     }
@@ -28,5 +42,20 @@ class MathAssessmentTest extends \PHPUnit_Framework_TestCase
             [[8, 2], [7, 2, 1], [6, 4, 1]],
             $mathAssessment->groupArrayByCloseToEqualSums($arr, $numberOfGroups)
         );
+    }
+
+    public function randomIntProvider()
+    {
+        return [
+            [33],
+            [4321],
+            [232323],
+            [121],
+            [3222],
+            [1567],
+            [895],
+            [44],
+            [3435],
+        ];
     }
 }
